@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Prova pratica 0 {%endblock title%}
+
+{%block content%}
+  <ol>
+    <li><a href="{% url 'prova_pratica_0:maxmin'%}">Max Min</a></li>
+    <li><a href="{% url 'prova_pratica_0:media'%}">Welcome</a></li>
+  </ol>
+{%endblock content%}

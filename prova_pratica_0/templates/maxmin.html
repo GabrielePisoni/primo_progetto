@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Prova pratica 0 {%endblock title%}
+
+{%block content%}
+{% if var1 < var2 %}
+    <b>variabile 1 = <span style="color: red">{{var1}}</span></b> <br/>
+    <b>variabile 2 = <span style="color: green">{{var2}}</span></b> <br/>
+{% elif var1 > var2 %}
+    <b>variabile 1 = <span style="color: green">{{var1}}</span></b> <br/>
+    <b>variabile 2 = <span style="color: red">{{var2}}</span></b> <br/>
+{% elif var1 == var2 %}
+    <b>variabile 1 = {{var1}}</b> <br/>
+    <b>variabile 2 = {{var2}}</b> <br/>
+{% endif %}
+<b>somma = {{somma}}</b> <br/>
+
+{%endblock content%}
