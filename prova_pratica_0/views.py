@@ -5,8 +5,8 @@ def index_3(request):
 
 def maxmin(request):
     import random
-    var1 = random.randint(0, 10)
-    var2 = random.randint(0, 10)
+    var1 = random.randint(1, 10)
+    var2 = random.randint(1, 10)
     context = {
         'var1' : var1,
         'var2' : var2,
@@ -15,4 +15,17 @@ def maxmin(request):
     return render(request, "maxmin.html", context)
 
 def media(request):
-    return render(request, "media.html")
+    import random
+    vet1 = []
+    somma = 0
+    for i in range(0, 30):
+        num = random.randint(1, 10)
+        somma += num
+        vet1.append(num)
+    media = somma/30
+    
+    context = {
+        'vet1' : vet1,
+        'media' : media,
+    }
+    return render(request, "media.html", context)

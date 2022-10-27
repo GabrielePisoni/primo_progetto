@@ -3,5 +3,14 @@
 {%block title%} {{block.super}} | Prova pratica 0 {%endblock title%}
 
 {%block content%}
-        
+<b>numeri = {{vet1}}</span></b> <br/>
+
+{% if media < 6 %}
+    <b>media = <span style="color: red">{{media}}</span></b>
+{% elif media > 6 %}
+    <b>media = <span style="color: green">{{media}}</span></b>
+{% elif media == 6 %}
+    <b>media = {{media}}</b>
+{% endif %}
+       
 {%endblock content%}
