@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>username</th>
+                <th>email</th>
+                <th>address</th>
+                <th>tabella</th>
+            </tr>
+        </thead>
+        <tbody id="tbody2"></tbody>
+    </table>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>userId</th>
+                <th>id</th>
+                <th>title</th>
+                <th>completed</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script>
+        const url="https://jsonplaceholder.typicode.com/todos/";
+        const urlUsers="https://jsonplaceholder.typicode.com/users/";
+        (async function() {
+            const response = await fetch(url);
+            const result = await response.json();
+            let tbody="";
+            for (const data of result) {
+                let ris = "<tr>";
+                for (let x in data) {
+                    if (x=="userId") {
+                        ris += `<td><a href='javascript:user(${data[x]})'>${data[x]}</a></td>`
+                    }
+                    else
+                        ris += "<td>"+data[x]+"</td>"
+                }
+                ris += "</tr>"
+                document.getElementById("tbody").innerHTML+=ris;
+            }
+        })();
+        async function user(data) {
+            const response = await fetch(urlUsers+data);
+            const result = await response.json();
+            document.getElementById("tbody2").hidden = false;
+            console.log(result)
+            let tbody="";
+            tbody += `<tr><td>${result.id}<td>`
+            tbody += `<td>${result.name}<td>`
+            tbody += `<td>${result.username}<td>`
+            tbody += `<td>${result.email}<td>`
+            tbody += `<td>${result.address.street, result.address.city}<td>`  
+            tbody += `<td><button onclick="nascondi()">tabella</button><td><tr>`
+            document.getElementById("tbody2").innerHTML=tbody;
+            document.getElementById("tbody").hidden=true;
+        }
+        function nascondi() {
+            document.getElementById("tbody").hidden = false;
+            document.getElementById("tbody2").hidden = true;
+        }
+    </script>
+</body>
+</html>
