@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <table border = 1px align = center>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>slug</th>
+                <th>moduli</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <table border = 1px align = center>
+        <thead>
+            <tr>
+                <th>slug</th>
+                <th>moduli</th>
+            </tr>
+        </thead>
+        <tbody id="tbody2"></tbody>
+    </table>
+    <script>
+        const url="https://www.umanet.net/api/courses/";
+        (async function() {
+            const response = await fetch(url);
+            const result = await response.json();
+            for (const data of result) {
+                let ris = "<tr>";
+                ris+=`<td><a href='javascript:user(${data.id})'>${data.title}</a></td>`
+                ris+=`<td>${data.slug}</td><td><ul>`
+                for (let x in data.modules) {
+                    ris += `<li>${data.modules[x].title}</li>`
+                }
+                ris+= "</ul></td>"
+                ris += "</tr>"
+
+                document.getElementById("tbody").innerHTML+=ris;
+            }
+        })();
+
+        async function user(id) {
+            const response = await fetch(url);
+            const result = await response.json();
+            document.getElementById("tbody").hidden = true
+            document.getElementById("tbody2").hidden = false
+            let ris = "<tr><td><button onclick=nascondi()>indietro</button></tr></td>"
+            for (const data of result) {
+                console.log(data.id, id, data.id==id)
+                if (data.id == id){
+                    ris += "<tr>";
+                    ris += `<td>${data.slug}</td><ul>`
+                    for (let x in data.modules) {
+                        ris += `<li>${data.modules[x].title}</li>`
+                    }
+                    ris += "</ul></td>"
+                    ris += "</tr>"
+                    document.getElementById("tbody2").innerHTML=ris;
+                }
+            }
+        }
+        function nascondi () {
+            document.getElementById("tbody").hidden = false;
+            document.getElementById("tbody2").hidden = true;
+        }
+    </script>
+</body>
+</html>
+
+
