@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista voti
+{% endblock title %}
+
+{% block content %}
+<h4>Voti: </h4>
+<ol>
+    <li>"Giuseppe Gullo"</li>
+    <ol>
+        {% for x in studenti1%} 
+            <li>{{x}}</li>
+        {% endfor %}
+    </ol>
+    <li>"Antonio Barbera"</li>
+    <ol>
+        {% for x in studenti2%} 
+            <li>{{x}}</li>
+        {% endfor %}
+    </ol>
+    <li>"Nicola Spina"</li>
+    <ol>
+        {% for x in studenti3%} 
+            <li>{{x}}</li>
+        {% endfor %}
+    </ol>
+</ol>
+{% endblock content %}
