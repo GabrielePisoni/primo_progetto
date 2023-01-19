@@ -6,24 +6,14 @@
 
 {% block content %}
 <h4>Voti: </h4>
-<ol>
-    <li>"Giuseppe Gullo"</li>
-    <ol>
-        {% for x in studenti1%} 
-            <li>{{x}}</li>
-        {% endfor %}
-    </ol>
-    <li>"Antonio Barbera"</li>
-    <ol>
-        {% for x in studenti2%} 
-            <li>{{x}}</li>
-        {% endfor %}
-    </ol>
-    <li>"Nicola Spina"</li>
-    <ol>
-        {% for x in studenti3%} 
-            <li>{{x}}</li>
-        {% endfor %}
-    </ol>
-</ol>
+
+{% for key, values in voti.items %}
+    <h4> {{key}} </h4>
+    <ul>
+    {% for x in values %}
+        <li> {{x}} </li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+
 {% endblock content %}
