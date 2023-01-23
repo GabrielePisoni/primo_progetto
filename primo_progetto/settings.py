@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'seconda_app',
     'prova_pratica_0',
     'news',
-    'verifica'
-    
+    'verifica', 
 ]
 
 MIDDLEWARE = [
@@ -66,7 +65,8 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, 'prova_pratica_0/templates'), 
                 os.path.join(BASE_DIR, 'primo_progetto/templates'), 
                 os.path.join(BASE_DIR, 'news/templates'),
-                os.path.join(BASE_DIR, 'verifica/templates')],
+                os.path.join(BASE_DIR, 'verifica/templates'),
+                os.path.join(BASE_DIR, 'templates')],
 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -134,3 +134,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

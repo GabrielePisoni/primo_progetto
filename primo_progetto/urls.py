@@ -27,4 +27,5 @@ urlpatterns = [
     path('', index_generale, name="index_generale"),
     path('news/', include('news.urls', namespace='news')),
     path('verifica/', include('verifica.urls', namespace='verifica')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
