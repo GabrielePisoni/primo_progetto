@@ -28,4 +28,5 @@ urlpatterns = [
     path('news/', include('news.urls', namespace='news')),
     path('verifica/', include('verifica.urls', namespace='verifica')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('forms_app/', include(('forms_app.urls', 'forms_app'), namespace='forms_app')),
 ]
