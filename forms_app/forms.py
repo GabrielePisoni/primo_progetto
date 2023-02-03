@@ -20,3 +20,6 @@ class FormContatto(forms.ModelForm):
         if len(dati)<20:
             raise ValidationError("Il contenuto inserito è troppo breve")
         return dati
+    
+
+    #
