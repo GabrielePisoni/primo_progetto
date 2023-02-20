@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
-
 {% block title %}
-    {{ articolo.titolo }}
+Lista articoli
 {% endblock title %}
-
 {% block content %}
-    <h1>{{ articolo.titolo }}</h1>
-    <h3>{{ articolo.contenuto }}</h3>
-    <h5>Autore: {{ articolo.giornalista }}</h5>
+<h4>Articoli:</h4>
+{% for articolo in articoli %}
+<p><strong>Titolo: </strong><a href="/news/articoli/{{articolo.id}}">{{articolo.titolo}}</a></p>
+<p><strong>Contenuto: </strong>{{articolo.contenuto}}</p>
+<p><strong>Autore: </strong>{{articolo.giornalista}}</p>
+<hr>
+{% endfor %}
 {% endblock content %}
