@@ -21,11 +21,11 @@ from .views import index_generale
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include("news.urls")),
     path('prima_app/', include('prima_app.urls', namespace='prima_app')),
     path('seconda_app/', include('seconda_app.urls', namespace='seconda_app')),
     path('prova_pratica_0/', include('prova_pratica_0.urls', namespace='prova_pratica_0')),
     path('', index_generale, name="index_generale"),
-    path('news/', include('news.urls', namespace='news')),
     path('verifica/', include('verifica.urls', namespace='verifica')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('forms_app/', include(('forms_app.urls', 'forms_app'), namespace='forms_app')),
