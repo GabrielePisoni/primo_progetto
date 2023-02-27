@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{%block title%}
+    Articoli e Giornalisti
+{%endblock title%}
+{%block content%}
+
+Tabella Giornalisti:
+
+<table>
+    <tr>
+        <td>nome</td><td>cognome</td>
+    </tr>
+    <tbody id = "tabella"></tbody>
+</table>
+
+{%endblock content%}
+
+{%block script%}
+
+<script>
+
+    const url = "https://gabrielepisoni.eu.pythonanywhere.com/api/giornalisti_lista_api/";
+
+    (async function() {
+
+        const response = await fetch(url);
+        const result = await response.json();
+
+        console.log(result);
+
+        tabella = "";
+
+        for (const data in result) {
+
+            for (let i=0; i < result[data].length; i++) {
+                tabella += "<tr><td>"+result[data][i].nome+"</td><td>"+result[data][i].cognome+"</td></tr>"
+            }
+        }
+
+        tabella += "</table>"
+
+        document.getElementById("tabella").innerHTML+=tabella;
+
+        
+
+    })();
+</script>
+
+{%endblock script%}

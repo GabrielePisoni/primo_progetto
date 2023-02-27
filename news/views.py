@@ -73,3 +73,7 @@ def giornalista_api(request, pk):
             }},
             status=404)
     return response
+
+
+def tabella_giornalisti(request):
+    return render(request,"tabella_giornalisti.html")
